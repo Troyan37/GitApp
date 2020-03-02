@@ -1,0 +1,27 @@
+Korzystając z API G​ithuba (https://developer.github.com/v3/repos/) stwórz stronę na której po umieszczeniu takiego kodu:
+
+<repos data-user="devballteam" data-update="2019-05-01">
+
+zostanie on podmieniony na element div zawierający informacje o repozytoriach użytkownika podanego w data atrybucie user zaktualizowanych 
+po dacie podanej w data atrybucie update. Aplikacja powinna mieć możliwość podmienienia więcej niż jednego tagu repos.
+
+Tag div powinien zawierać informacje:
+
+nazwę użytkownika
+tabelę z jego repozytoriami w której będą następujące kolumny:
+nazwa repozytorium
+opis repozytorium
+data ostatniej aktualizacji
+link do ściągnięcia repozytorium
+Wytyczne:
+
+użycie jak największej ilości ES6
+wykorzystanie preprocesora css (scss, less)
+brak frameworków
+obsługa błędów
+kod umieszczony w repozytorium git
+wykorzystanie TypeScript będzie dodatkowym atutem
+dokumentacja w postaci JSDocs będzie dodatkowym atutem
+Uwaga: Publiczne API githuba ma ograniczoną liczbę zapytań, aby korzystać z niego dowoli należy wygenerować Access token 
+(Developer settings -> Personal access tokens -> Generate new token).
+

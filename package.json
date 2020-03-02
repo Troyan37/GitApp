@@ -1,0 +1,25 @@
+{
+  "name": "gitapp",
+  "version": "1.0.0",
+  "description": "Application for displaying github user data.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "scss": "node-sass scss --output-style compressed --o public/css"
+  },
+  "author": "Mateusz Trojanowski",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "ejs": "^3.0.1",
+    "express": "^4.17.1",
+    "node-fetch": "^2.6.0",
+    "node-sass": "^4.13.1"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.20.1",
+    "nodemon": "^2.0.2"
+  }
+}
