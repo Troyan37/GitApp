@@ -3,20 +3,73 @@
 const template = document.createElement('template');
 
 template.innerHTML = `
+<style>
+table {
+	margin: 0 0 2rem 0;
+	width: 100%;
+}
+
+	table tbody tr {
+		border: solid 1px;
+		border-left: 0;
+		border-right: 0;
+	}
+
+	table td {
+		padding: 0.75rem 0.75rem;
+	}
+
+	table th {
+		font-size: 0.9rem;
+		font-weight: 700;
+		padding: 0 0.75rem 0.75rem 0.75rem;
+		text-align: center;
+	}
+
+	table thead {
+		border-bottom: solid 2px;
+	}
+
+	table tfoot {
+		border-top: solid 2px;
+	}
+
+table tbody tr {
+	border-color: rgba(144, 144, 144, 0.25);
+}
+
+	table tbody tr:nth-child(2n + 1) {
+		background-color: rgba(144, 144, 144, 0.075);
+	}
+
+table th {
+	color: #1e1f23;
+}
+
+table thead {
+	border-bottom-color: rgba(144, 144, 144, 0.25);
+}
+
+table tfoot {
+	border-top-color: rgba(144, 144, 144, 0.25);
+}
+</style>
+
 <br />
 <div class='repos-container'>
 <label>Username</label>
-<table style="width:100%">
+<table>
   <tr>
     <th>Nazwa Repozytorium</th>
     <th>Opis Repozytorium</th>
-    <th>Data ostatniej aktualizacji</th>
-    <th>Link do pobrania repozytorium</th>
+    <th>Data aktualizacji</th>
+    <th>Link do repozytorium</th>
   </tr>
 </table>
 </div>
 <br />
 `;
+
 
 async function getRepos(name, date) {
   const arr = window.location.href.split('/');
@@ -34,7 +87,7 @@ async function getRepos(name, date) {
     }
     return response;
   } catch (err) {
-    throw new Error(err);
+    console.log(err);
   }
 }
 
@@ -48,10 +101,14 @@ class ReposTable extends HTMLElement {
   async connectedCallback() {
     const name = this.getAttribute('data-user');
     const date = this.getAttribute('data-update');
+    let result;
 
-    const result = await getRepos(name, date);
-
-    this.render(name, result);
+    try {
+      result = await getRepos(name, date);
+      this.render(name, result);
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   render(name, result) {
@@ -77,7 +134,7 @@ class ReposTable extends HTMLElement {
         tdName.textContent = i.name;
         tdDesc.textContent = i.description;
         tdDate.textContent = i.updated_at.replace('T', ' ').replace('Z', ' ');
-        link.href = i.git_url;
+        link.href = i.html_url;
         link.textContent = i.url;
 
         table.appendChild(tdName);
