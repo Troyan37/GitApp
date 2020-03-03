@@ -2,7 +2,7 @@
 **Aplikacja NodeJS wyświetlająca informacje o repozytoriach podanego użytkownika Github.** <br/> <br/>
 Zbudowana przy pomocy standardu [Webcomponentów](https://developer.mozilla.org/en-US/docs/Web/Web_Components), pozwala na zamianę tagu `<repos-table>` na komponent wyświetlający tabelkę z danymi użytkownika przekazanego w atrybucie `data-user`. Dane będą nowsze od daty podanej w atrybucie `<data-update>`. <br/>
 
-  np.  `<repos-table data-user="troyan37" data-update="2020-01-07"></repos-table>` wyświetli tabelkę z danymi o repozytoriach użytkownika **troyan37**, założonymi po dniu **07.01.2020**. <br/><br/>
+  np.  `<repos-table data-user="troyan37" data-update="2020-01-07"></repos-table>` wyświetli tabelkę z danymi o repozytoriach użytkownika **troyan37**, zaktualizowanymi po dniu **07.01.2020**. <br/><br/>
 
 Aby uruchomić aplikację, należy pobrać kod (np. `git clone`), a następnie wywołać w folderze z package.json polecenie: <br/>
 `npm install`<br/>
