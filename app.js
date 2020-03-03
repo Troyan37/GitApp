@@ -21,9 +21,15 @@ app.get('/', (req, res) => {
 
 app.get('/repos/:name', async (req, res) => {
   try {
-    const headers = {
-      Authorization: `Token ${process.env.API_KEY}`,
-    };
+    let headers;
+
+    if (process.env.API_KEY === 'YOUR_API_TOKEN' || typeof process.env.API_KEY === 'undefined' || process.env.API_KEY === '') {
+      console.log(`${chalk.red('Token nie został uzupełniony, aby korzystać z API bez limitu skonfiguruj token zgodnie z README.md!')}`);
+    } else {
+      headers = {
+        Authorization: `Token ${process.env.API_KEY}`,
+      };
+    }
 
     const response = await fetch(`https://api.github.com/users/${req.params.name}/repos?sort=update`,
       {
